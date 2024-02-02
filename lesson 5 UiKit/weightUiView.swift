@@ -50,14 +50,6 @@ final class WeightAndAgeUiView: UIView {
         return label
         
     }()
-//    private lazy var resultLAbel: UILabel = {
-//        let label = UILabel()
-//        label.text = info.result
-//        label.font = UIFont.systemFont(ofSize: 24, weight: .bold)
-//        label.textColor = .white
-//        label.textAlignment = .center
-//        return label
-//    }()
     
     var totalResult = 0
     private lazy var weightNumberLabel: UILabel = {
@@ -128,6 +120,12 @@ final class WeightAndAgeUiView: UIView {
             make.horizontalEdges.equalToSuperview()
             
         })
+        addSubview(weightNumberLabel)
+        weightNumberLabel.snp.makeConstraints({make in
+            make.top.equalTo(infoLable.snp.bottom).offset(10)
+            make.horizontalEdges.equalToSuperview()
+            
+        })
         addSubview(plusButton)
         plusButton.snp.makeConstraints({make in
             make.top.equalTo(ageNumberLabel.snp.bottom).offset(15)
@@ -146,11 +144,13 @@ final class WeightAndAgeUiView: UIView {
 
     @objc func plusOption(){
         totalResult += 1
+        weightTotal += 1
         ageNumberLabel.text = "\(totalResult)"
         
     }
     @objc func minusOption(){
         totalResult -= 1
+        weightTotal -= 1
         ageNumberLabel.text = "\(totalResult)"
     }
     
