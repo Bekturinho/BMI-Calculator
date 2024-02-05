@@ -9,6 +9,7 @@ import UIKit
 import SnapKit
 public var weightTotal = 0.0
 public var heightTotal = 0.0
+public var totalResultInAllViews = 0.0
 final class BMICalculatorViewController: UIViewController {
     private var selectedGender: Genders? = nil
    
@@ -16,7 +17,7 @@ final class BMICalculatorViewController: UIViewController {
         let label = UILabel()
         label.text = "BMI Calculator"
         label.textColor = .white
-        label.backgroundColor = .blue
+        label.backgroundColor = UIColor(red: 0.102, green: 0.122, blue: 0.22, alpha: 1)
         label.textAlignment = .center
         label.font = UIFont.systemFont(ofSize: 35, weight: .bold)
         
@@ -60,7 +61,8 @@ final class BMICalculatorViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        view.backgroundColor = .purple
+        view.layer.backgroundColor = UIColor(red: 0.039, green: 0.055, blue: 0.129, alpha: 1).cgColor
+       
        setupSubViews()
     }
 
@@ -80,7 +82,8 @@ final class BMICalculatorViewController: UIViewController {
             make.width.equalTo(view.alpha).offset(136)
             make.height.equalTo(view.alpha).offset(160)
             maleButton.layer.cornerRadius = 12
-            maleButton.backgroundColor = .red
+            maleButton.backgroundColor = UIColor(red: 0.102, green: 0.122, blue: 0.22, alpha: 1)
+
         })
         view.addSubview(femaleButton)
         femaleButton.snp.makeConstraints({make in
@@ -89,7 +92,8 @@ final class BMICalculatorViewController: UIViewController {
             make.width.equalTo(view.alpha).offset(136)
             make.height.equalTo(view.alpha).offset(160)
             femaleButton.layer.cornerRadius = 12
-            femaleButton.backgroundColor = .red
+            femaleButton.backgroundColor = UIColor(red: 0.102, green: 0.122, blue: 0.22, alpha: 1)
+
             
         })
         view.addSubview(heightSliderUiView)
@@ -99,7 +103,8 @@ final class BMICalculatorViewController: UIViewController {
             make.left.equalTo(view.safeAreaLayoutGuide).offset(45)
             make.right.equalTo(view.safeAreaLayoutGuide).offset(-45)
             make.top.equalTo(femaleButton.snp.bottom).offset(15)
-            heightSliderUiView.backgroundColor = .red
+            heightSliderUiView.backgroundColor = UIColor(red: 0.102, green: 0.122, blue: 0.22, alpha: 1)
+
             heightSliderUiView.layer.cornerRadius = 12
             
             
@@ -108,7 +113,7 @@ final class BMICalculatorViewController: UIViewController {
         weightButtonView.snp.makeConstraints({make in
             make.top.equalTo(heightSliderUiView.snp.bottom).offset(15)
             make.left.equalTo(view.safeAreaLayoutGuide).offset(45)
-            weightButtonView.backgroundColor = .red
+            weightButtonView.backgroundColor = UIColor(red: 0.102, green: 0.122, blue: 0.22, alpha: 1)
             make.width.equalTo(view.alpha).offset(136)
             make.height.equalTo(view.alpha).offset(160)
             weightButtonView.layer.cornerRadius = 12
@@ -118,7 +123,8 @@ final class BMICalculatorViewController: UIViewController {
         ageButtomView.snp.makeConstraints({make in
             make.top.equalTo(heightSliderUiView.snp.bottom).offset(15)
             make.right.equalTo(view.safeAreaLayoutGuide).offset(-45)
-            ageButtomView.backgroundColor = .red
+            ageButtomView.backgroundColor = UIColor(red: 0.102, green: 0.122, blue: 0.22, alpha: 1)
+
             make.width.equalTo(view.alpha).offset(136)
             make.height.equalTo(view.alpha).offset(160)
             ageButtomView.layer.cornerRadius = 12
@@ -134,7 +140,9 @@ final class BMICalculatorViewController: UIViewController {
     
 
     @objc func calculateBMI(){
-        print("\(weightTotal / (heightTotal * heightTotal))")
+        totalResultInAllViews = (weightTotal / (heightTotal * heightTotal))
+        let teleport = ResultViewController()
+        navigationController?.pushViewController(teleport, animated: true)
         
     }
 }

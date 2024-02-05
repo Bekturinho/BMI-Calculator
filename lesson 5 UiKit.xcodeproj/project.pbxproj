@@ -22,6 +22,8 @@
 		E00ECDCE2B6CA25600D1DBAA /* weightUiView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00ECDCD2B6CA25600D1DBAA /* weightUiView.swift */; };
 		E00ECDD02B6CB6D900D1DBAA /* sliderUiView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00ECDCF2B6CB6D900D1DBAA /* sliderUiView.swift */; };
 		E00ECDD42B6CDC9F00D1DBAA /* ageUiView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00ECDD32B6CDC9F00D1DBAA /* ageUiView.swift */; };
+		E00ECDD62B70689600D1DBAA /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00ECDD52B70689600D1DBAA /* ResultViewController.swift */; };
+		E00ECDD82B706B3800D1DBAA /* ResultUiView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00ECDD72B706B3800D1DBAA /* ResultUiView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,6 +68,8 @@
 		E00ECDCD2B6CA25600D1DBAA /* weightUiView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = weightUiView.swift; sourceTree = "<group>"; };
 		E00ECDCF2B6CB6D900D1DBAA /* sliderUiView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = sliderUiView.swift; sourceTree = "<group>"; };
 		E00ECDD32B6CDC9F00D1DBAA /* ageUiView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ageUiView.swift; sourceTree = "<group>"; };
+		E00ECDD52B70689600D1DBAA /* ResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultViewController.swift; sourceTree = "<group>"; };
+		E00ECDD72B706B3800D1DBAA /* ResultUiView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultUiView.swift; sourceTree = "<group>"; };
 		EFE3F1FA10461D29818B3D17 /* Pods-lesson 5 UiKitTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-lesson 5 UiKitTests.debug.xcconfig"; path = "Target Support Files/Pods-lesson 5 UiKitTests/Pods-lesson 5 UiKitTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -138,10 +142,12 @@
 				E00ECDCB2B6B694C00D1DBAA /* genderBMIButtons.swift */,
 				E00ECDCF2B6CB6D900D1DBAA /* sliderUiView.swift */,
 				E00ECDCD2B6CA25600D1DBAA /* weightUiView.swift */,
+				E00ECDD32B6CDC9F00D1DBAA /* ageUiView.swift */,
+				E00ECDD52B70689600D1DBAA /* ResultViewController.swift */,
+				E00ECDD72B706B3800D1DBAA /* ResultUiView.swift */,
 				E00ECDA02B6A23A700D1DBAA /* Assets.xcassets */,
 				E00ECDA22B6A23A700D1DBAA /* LaunchScreen.storyboard */,
 				E00ECDA52B6A23A700D1DBAA /* Info.plist */,
-				E00ECDD32B6CDC9F00D1DBAA /* ageUiView.swift */,
 			);
 			path = "lesson 5 UiKit";
 			sourceTree = "<group>";
@@ -414,9 +420,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E00ECDD82B706B3800D1DBAA /* ResultUiView.swift in Sources */,
 				E00ECD9C2B6A23A300D1DBAA /* BMICalculatorViewController.swift in Sources */,
 				E00ECDD42B6CDC9F00D1DBAA /* ageUiView.swift in Sources */,
 				E00ECDCC2B6B694C00D1DBAA /* genderBMIButtons.swift in Sources */,
+				E00ECDD62B70689600D1DBAA /* ResultViewController.swift in Sources */,
 				E00ECDCE2B6CA25600D1DBAA /* weightUiView.swift in Sources */,
 				E00ECD982B6A23A300D1DBAA /* AppDelegate.swift in Sources */,
 				E00ECD9A2B6A23A300D1DBAA /* SceneDelegate.swift in Sources */,
