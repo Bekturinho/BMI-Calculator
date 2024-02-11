@@ -13,7 +13,7 @@ class sliderUiView: UIView {
     private lazy var heightSlider: UISlider = {
         let slider = UISlider(frame: CGRect(x: 0, y: 0, width: 270, height: 60))
         slider.minimumValue = 0
-        slider.maximumValue = 3
+        slider.maximumValue = 300
         slider.center = center
         slider.value = 0
         slider.addTarget(self, action: #selector(sliderValueChange(sender:)), for: .valueChanged)
@@ -62,9 +62,8 @@ class sliderUiView: UIView {
     }
     
     @objc func sliderValueChange(sender: UISlider){
-        resultLAbel.text = String(sender.value)
         heightTotal = Double(sender.value)
-        
+        resultLAbel.text = String(Int(heightTotal))
         print(heightTotal)
     }
 

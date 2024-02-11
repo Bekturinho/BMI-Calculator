@@ -97,8 +97,12 @@ final class ageUiView: UIView {
         }
         @objc func minusOption(){
             totalResult -= 1
-            
-            ageNumberLabel.text = "\(totalResult)"
+            if totalResult < 0{
+                totalResult = 0
+                ageNumberLabel.text = "0"
+            }else{
+                ageNumberLabel.text = "\(totalResult)"
+            }
         }
         
     }

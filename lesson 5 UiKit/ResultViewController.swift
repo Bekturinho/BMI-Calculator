@@ -7,6 +7,9 @@
 
 import UIKit
 import SnapKit
+
+public var rateLAbelResult = ""
+public var commentLabelResult = ""
 class ResultViewController: UIViewController {
 
     private var resultUiViewType: ResultUiView = {

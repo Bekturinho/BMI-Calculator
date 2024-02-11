@@ -72,8 +72,7 @@ final class genderBMIButtons: UIView {
         addSubview(genderaImageView)
         genderaImageView.snp.makeConstraints({make in
             make.top.equalToSuperview().offset(35)
-            make.leading.equalToSuperview().offset(34)
-            make.trailing.equalToSuperview().offset(-34)
+            make.centerX.equalToSuperview()
             make.width.equalTo(68)
             make.height.equalTo(47)
         })
@@ -81,9 +80,8 @@ final class genderBMIButtons: UIView {
         addSubview(genderLabel)
         genderLabel.snp.makeConstraints({make in
             make.top.equalTo(genderaImageView.snp.bottom).offset(25)
-            make.leading.equalToSuperview().offset(22)
-            make.trailing.equalToSuperview().offset(-22)
-            make.bottom.equalToSuperview().offset(-20)
+            make.horizontalEdges.equalToSuperview()
+            
         })
         addTapGesture()
     }

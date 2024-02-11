@@ -79,14 +79,13 @@ final class WeightAndAgeUiView: UIView {
         plusButton.snp.makeConstraints({make in
             make.top.equalTo(weightNumberLabel.snp.bottom).offset(15)
             make.left.equalToSuperview().offset(21)
-            make.bottom.equalToSuperview().offset(-25)
+
             
         })
         addSubview(minusButton)
         minusButton.snp.makeConstraints({make in
             make.top.equalTo(weightNumberLabel.snp.bottom).offset(15)
             make.right.equalToSuperview().offset(-21)
-            make.bottom.equalToSuperview().offset(-25)
             
         })
     }
@@ -100,7 +99,12 @@ final class WeightAndAgeUiView: UIView {
     @objc func minusOption(){
         totalResult -= 1
         weightTotal -= 1
-        weightNumberLabel.text = "\(totalResult)"
+        if totalResult < 0{
+            totalResult = 0
+            weightNumberLabel.text = "0"
+        }else{
+            weightNumberLabel.text = "\(totalResult)"
+        }
     }
     
 }

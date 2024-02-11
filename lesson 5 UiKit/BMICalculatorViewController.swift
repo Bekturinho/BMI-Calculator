@@ -24,16 +24,20 @@ final class BMICalculatorViewController: UIViewController {
         return label
     }()
     
-    private var maleButton: genderBMIButtons = {
+    private lazy var maleButton: genderBMIButtons = {
         genderBMIButtons(type: .male){
             print("male")
+            self.selectedGender = .male
+            self.femaleButton.resetBorders()
         }
         
     }()
     
-    private var femaleButton: genderBMIButtons = {
+    private lazy var femaleButton: genderBMIButtons = {
         genderBMIButtons(type: .female) {
             print("Female")
+            self.selectedGender = .female
+            self.maleButton.resetBorders()
         }
     }()
     
@@ -78,8 +82,8 @@ final class BMICalculatorViewController: UIViewController {
         view.addSubview(maleButton)
         maleButton.snp.makeConstraints({make in
             make.top.equalTo(navBarLabel.snp.bottom).offset(20)
-            make.left.equalTo(view.safeAreaLayoutGuide).offset(45)
-            make.width.equalTo(view.alpha).offset(136)
+            make.left.equalTo(view.safeAreaLayoutGuide).offset(40)
+            make.width.equalTo(view.alpha).offset(135)
             make.height.equalTo(view.alpha).offset(160)
             maleButton.layer.cornerRadius = 12
             maleButton.backgroundColor = UIColor(red: 0.102, green: 0.122, blue: 0.22, alpha: 1)
@@ -88,8 +92,8 @@ final class BMICalculatorViewController: UIViewController {
         view.addSubview(femaleButton)
         femaleButton.snp.makeConstraints({make in
             make.top.equalTo(navBarLabel.snp.bottom).offset(20)
-            make.right.equalTo(view.safeAreaLayoutGuide).offset(-45)
-            make.width.equalTo(view.alpha).offset(136)
+            make.right.equalTo(view.safeAreaLayoutGuide).offset(-40)
+            make.width.equalTo(view.alpha).offset(135)
             make.height.equalTo(view.alpha).offset(160)
             femaleButton.layer.cornerRadius = 12
             femaleButton.backgroundColor = UIColor(red: 0.102, green: 0.122, blue: 0.22, alpha: 1)
@@ -98,11 +102,10 @@ final class BMICalculatorViewController: UIViewController {
         })
         view.addSubview(heightSliderUiView)
         heightSliderUiView.snp.makeConstraints({make in
-            make.centerX.equalTo(view.snp.centerX)
+            make.center.equalTo(view.snp.center)
             make.height.equalTo(view.alpha).offset(150)
             make.left.equalTo(view.safeAreaLayoutGuide).offset(45)
             make.right.equalTo(view.safeAreaLayoutGuide).offset(-45)
-            make.top.equalTo(femaleButton.snp.bottom).offset(15)
             heightSliderUiView.backgroundColor = UIColor(red: 0.102, green: 0.122, blue: 0.22, alpha: 1)
 
             heightSliderUiView.layer.cornerRadius = 12
@@ -111,27 +114,27 @@ final class BMICalculatorViewController: UIViewController {
         })
         view.addSubview(weightButtonView)
         weightButtonView.snp.makeConstraints({make in
-            make.top.equalTo(heightSliderUiView.snp.bottom).offset(15)
-            make.left.equalTo(view.safeAreaLayoutGuide).offset(45)
-            weightButtonView.backgroundColor = UIColor(red: 0.102, green: 0.122, blue: 0.22, alpha: 1)
-            make.width.equalTo(view.alpha).offset(136)
+            make.top.equalTo(heightSliderUiView.snp.bottom).offset(70)
+            make.left.equalTo(view.safeAreaLayoutGuide).offset(40)
+            make.width.equalTo(view.alpha).offset(135)
             make.height.equalTo(view.alpha).offset(160)
             weightButtonView.layer.cornerRadius = 12
+            weightButtonView.backgroundColor = UIColor(red: 0.102, green: 0.122, blue: 0.22, alpha: 1)
         })
         
         view.addSubview(ageButtomView)
         ageButtomView.snp.makeConstraints({make in
-            make.top.equalTo(heightSliderUiView.snp.bottom).offset(15)
-            make.right.equalTo(view.safeAreaLayoutGuide).offset(-45)
-            ageButtomView.backgroundColor = UIColor(red: 0.102, green: 0.122, blue: 0.22, alpha: 1)
-
-            make.width.equalTo(view.alpha).offset(136)
+            make.top.equalTo(heightSliderUiView.snp.bottom).offset(70)
+            make.right.equalTo(view.safeAreaLayoutGuide).offset(-40)
+            make.width.equalTo(view.alpha).offset(135)
             make.height.equalTo(view.alpha).offset(160)
             ageButtomView.layer.cornerRadius = 12
+            ageButtomView.backgroundColor = UIColor(red: 0.102, green: 0.122, blue: 0.22, alpha: 1)
         })
         view.addSubview(calculateButton)
         calculateButton.snp.makeConstraints({make in
-            make.bottom.equalToSuperview()
+            make.bottom.equalTo(view.safeAreaLayoutGuide)
+            
             make.width.equalTo(view.alpha)
             make.height.equalTo(view.alpha).offset(55)
             make.horizontalEdges.equalToSuperview()
@@ -140,7 +143,23 @@ final class BMICalculatorViewController: UIViewController {
     
 
     @objc func calculateBMI(){
-        totalResultInAllViews = (weightTotal / (heightTotal * heightTotal))
+        let total = ((weightTotal / (heightTotal * heightTotal)) * 10000)
+        totalResultInAllViews = Double(Int(total * 10) ) / 10
+        if totalResultInAllViews < 18{
+            rateLAbelResult = "BAD"
+            commentLabelResult = "Eat Food"
+        }
+        if totalResultInAllViews < 25{
+            rateLAbelResult = "NORMAL"
+            commentLabelResult = "GOOD BOY"
+        }
+        if totalResultInAllViews > 25{
+            rateLAbelResult = "BAD"
+            commentLabelResult = "You a Bit WaterMelon"
+        }
+        print(total)
+        
+        
         let teleport = ResultViewController()
         navigationController?.pushViewController(teleport, animated: true)
         

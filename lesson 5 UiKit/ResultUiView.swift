@@ -11,8 +11,15 @@ class ResultUiView: UIView {
 
     private lazy var rateLabel: UILabel = {
         let label = UILabel()
-        label.text = "NORMAL"
-        label.textColor = .systemGreen
+        label.text = rateLAbelResult
+        switch rateLAbelResult {
+        case "NORMAL": label.textColor = .systemGreen
+        case "BAD": label.textColor = .systemRed
+        case "NOT GOOD": label.textColor = .systemYellow
+        default:
+            label.text = "ERROR"
+        }
+       
         label.textAlignment = .center
         label.font = UIFont.systemFont(ofSize: 35, weight: .bold)
         return label
@@ -28,9 +35,9 @@ class ResultUiView: UIView {
     private lazy var commentLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .center
-        label.text = "You Fat As Fuck"
+        label.text = commentLabelResult
         label.textColor = .white
-        label.font = UIFont.systemFont(ofSize: 35, weight: .bold)
+        label.font = UIFont.systemFont(ofSize: 20, weight: .bold)
         return label
     }()
     
